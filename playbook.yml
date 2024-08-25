@@ -1,0 +1,69 @@
+---
+- name: Install NGINX
+  hosts: web_server
+  collections:
+   - nginxinc.nginx_core
+  tasks:
+   - name: Install NGINX
+     ansible.builtin.include_role:
+       name: nginx
+  tags: nginx
+
+- name: Install prometheus
+  hosts: prometheus
+  become: true
+  roles:
+    - role: prometheus.prometheus.prometheus
+  tags: prometheus
+
+- name: Install node_exporter
+  hosts: node_exporter
+  become: true
+  roles:
+    - role: prometheus.prometheus.node_exporter
+  tags: node_exporter
+
+- name: Install mysql_exporter
+  hosts: db_server
+  become: true
+  roles:
+    - role: prometheus.prometheus.mysqld_exporter
+  tags: mysqld_exporter
+
+- name: Install nginx_exporter
+  hosts: web_server
+  become: true
+  roles:
+    - role: prometheus.prometheus.nginx_exporter
+  tags: nginx_exporter
+
+- name: Install grafana
+  hosts: grafana
+  become: true
+  roles:
+    - role: grafana.grafana.grafana
+  tags: grafana
+
+- name: Install loki
+  hosts: loki
+  become: true
+  roles:
+    - role: bodsch.grafana.loki
+  tags: loki
+
+- name: Install promtail
+  hosts: promtail
+  become: true
+  roles:
+    - role: bodsch.grafana.promtail
+  tags: promtail
+
+
+- name: Install Nginx
+  hosts: web_server
+  become: true
+  roles:
+    - role: ansible-role-nginx
+    - role: nginx_exporter
+  tags: nginx
+...
