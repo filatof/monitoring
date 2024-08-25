@@ -1,7 +1,7 @@
 
-server1 ansible_host=45.9.27.25 ansible_port=22 ansible_user='root' ansible_ssh_private_key_file='/Users/fill/.ssh/id_ed25519' ansible_python_interpreter=/usr/bin/python3
-server2 ansible_host=87.242.95.29 ansible_port=22 ansible_user='root' ansible_ssh_private_key_file='/Users/fill/.ssh/id_ed25519' ansible_python_interpreter=/usr/bin/python3
-server3 ansible_host=94.139.252.42 ansible_port=22 ansible_user='root' ansible_ssh_private_key_file='/Users/fill/.ssh/id_ed25519'
+server1 ansible_host=89.169.134.56 ansible_port=22 ansible_user='fill' ansible_ssh_private_key_file='/Users/fill/.ssh/id_ed25519' ansible_python_interpreter=/usr/bin/python3
+server2 ansible_host=89.169.130.27 ansible_port=22 ansible_user='fill' ansible_ssh_private_key_file='/Users/fill/.ssh/id_ed25519' ansible_python_interpreter=/usr/bin/python3
+server3 ansible_host=89.169.140.70 ansible_port=22 ansible_user='fill' ansible_ssh_private_key_file='/Users/fill/.ssh/id_ed25519' ansible_python_interpreter=/usr/bin/python3
 
 [prometheus]
 server1
@@ -15,11 +15,16 @@ server1
 [promtail]
 server1
 server2
+server3
 
 [node_exporter]
 server1
 server2
+server3
 
 [web_server]
 server2
+
+[db_server]
+server3
 
