@@ -1,0 +1,46 @@
+---
+# - name: Install prometheus
+#   hosts: prometheus
+#   become: true
+#   roles:
+#     - role: prometheus
+#   tags: prometheus
+
+# - name: Install grafana
+#   hosts: grafana
+#   become: true
+#   # vars:
+#   #   ansible_python_interpreter: /usr/bin/python3
+#   roles:
+#     - role: bodsch.grafana.grafana
+#   tags: grafana
+
+# - name: Install loki
+#   hosts: loki
+#   become: true
+#   roles:
+#     - role: bodsch.grafana.loki
+#   tags: loki
+
+- name: Install promtail
+  hosts: promtail
+  become: true
+  roles:
+    - role: bodsch.grafana.promtail
+  tags: promtail
+
+- name: Install node_exporter
+  hosts: node_exporter
+  become: true
+  roles:
+    - role: node_exporter
+  tags: node_exporter
+
+- name: Install Nginx
+  hosts: web_server
+  become: true
+  roles:
+    - role: ansible-role-nginx
+    - role: nginx_exporter
+  tags: nginx
+...

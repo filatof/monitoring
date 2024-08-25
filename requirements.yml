@@ -1,0 +1,12 @@
+---
+collections:
+  - name: grafana.grafana
+  - name: prometheus.prometheus
+  - name: nginxinc.nginx_core
+
+
+
+
+
+
+
