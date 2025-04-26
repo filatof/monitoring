@@ -4,6 +4,7 @@ kind: Kustomization
 metadata:
   name: metrics-scrape
   namespace: flux-system
+
 spec:
   dependsOn:
     - name: metrics
